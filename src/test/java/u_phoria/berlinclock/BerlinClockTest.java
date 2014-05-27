@@ -1,7 +1,6 @@
 package u_phoria.berlinclock;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 
@@ -19,10 +18,15 @@ public class BerlinClockTest {
 	}
 
 	@Test
-	public void equalsComparesAllFields() {
+	public void equalsAcrossAllFields() {
 		BerlinClock bc = new BerlinClock(true, 1, 2, 3, 4);
 		
 		assertEquals(new BerlinClock(true, 1, 2, 3, 4), bc);
+	}
+	
+	@Test
+	public void equalsFalseForDifferentType() {
+		assertFalse(new BerlinClock(true, 0,  1, 2, 3).equals(new Object()));
 	}
 	
 	@Test
@@ -41,5 +45,14 @@ public class BerlinClockTest {
 		
 		assertNotEquals(bc2, bc1);
 		assertNotEquals(bc2.hashCode(), bc1.hashCode());
+	}
+	
+	@Test
+	public void toStringRepresentation() {
+		BerlinClock bc = new BerlinClock(true, 0, 1, 2, 3);
+		
+		String res = bc.toString();
+		
+		assertEquals("BerlinClock[true 0 1 2 3]", res);
 	}
 }
