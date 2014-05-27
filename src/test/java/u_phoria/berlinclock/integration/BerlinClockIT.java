@@ -7,12 +7,13 @@ import org.junit.Test;
 import u_phoria.berlinclock.BerlinClock;
 import u_phoria.berlinclock.BerlinClockFactory;
 import u_phoria.berlinclock.BerlinClockFormatter;
+import u_phoria.berlinclock.BerlinClockStringFormatter;
 
 public class BerlinClockIT {
 	
 	
 	private BerlinClockFactory berlinClockFactory = new BerlinClockFactory();
-	private BerlinClockFormatter berlinClockFormatter;
+	private BerlinClockFormatter berlinClockFormatter = new BerlinClockStringFormatter();
 
 	@Test
 	public void mapZeroTime() {
