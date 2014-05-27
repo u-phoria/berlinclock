@@ -11,12 +11,12 @@ import u_phoria.berlinclock.BerlinClockFormatter;
 public class BerlinClockIT {
 	
 	
-	private BerlinClockFactory berlinClockFactory;
+	private BerlinClockFactory berlinClockFactory = new BerlinClockFactory();
 	private BerlinClockFormatter berlinClockFormatter;
 
 	@Test
 	public void mapZeroTime() {
-		BerlinClock bc = berlinClockFactory.fromTime("00:00:00");
+		BerlinClock bc = berlinClockFactory.createFromTime("00:00:00");
 		
 		String res = berlinClockFormatter.format(bc);
 		
