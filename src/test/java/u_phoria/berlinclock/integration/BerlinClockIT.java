@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import u_phoria.berlinclock.BerlinClock;
 import u_phoria.berlinclock.BerlinClockFactory;
+import u_phoria.berlinclock.BerlinClockFormatter;
 
 public class BerlinClockIT {
 	
