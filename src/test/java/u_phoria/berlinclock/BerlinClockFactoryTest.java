@@ -9,8 +9,6 @@ import org.junit.rules.ExpectedException;
 public class BerlinClockFactoryTest {
 	@Rule public ExpectedException thrown = ExpectedException.none();
 	private BerlinClockFactory berlinClockFactory = new BerlinClockFactory();
-
-	// for null / invalid numbers, just allow NPE / NFE
 	
 	@Test
 	public void failForInvalidFormatEmpty() {
@@ -29,10 +27,25 @@ public class BerlinClockFactoryTest {
 	}
 	
 	@Test
+	public void failForInvalidHours() {
+		thrown.expect(IllegalArgumentException.class);
+		thrown.expectMessage("Invalid time format");
+		
+		berlinClockFactory.createFromTime("25:00:00");
+	}
+	
+	@Test
 	public void createFromZeroTimeString() {
 		BerlinClock bc = berlinClockFactory.createFromTime("00:00:00");
 		
 		assertEquals(new BerlinClock(true, 0, 0, 0, 0), bc);
+	}
+	
+	@Test
+	public void createFromTwentyFourHundred() {
+		BerlinClock bc = berlinClockFactory.createFromTime("24:00:00");
+		
+		assertEquals(new BerlinClock(true, 4, 4, 0, 0), bc);
 	}
 	
 	@Test
