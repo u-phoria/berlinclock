@@ -15,7 +15,6 @@ public class BerlinClockFactory {
 		return createFromTime(hours, mins, secs);
 	}
 
-	// can be exposed as public api as long as BerlinClock object does validation / checks invariants
 	protected BerlinClock createFromTime(int hours, int mins, int secs) {
 		return new BerlinClock(secs % 2 == 0,
 				hours / 5,
